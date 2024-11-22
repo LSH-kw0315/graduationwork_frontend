@@ -1,0 +1,93 @@
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+
+  datasource:
+    url: jdbc:mariadb://121.174.90.142:18643/promptdb?zeroDateTimeBehavior=convertToNull
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: akfldk123!
+
+  jpa:
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        use_sql_comments: false
+        format_sql: true
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  batch:
+    job:
+      enabled: false
+
+logging:
+  #  file:
+  #    name: /logs/server_log.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: false
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: DEBUG
+              BasicExtractor: DEBUG
+      springframework:
+        web: DEBUG
+        data:
+          jpa:
+            repository:
+              support: DEBUG
+        session:
+          data:
+            redis: DEBUG
+      boot:
+        autoconfigure:
+          data:
+            rest: DEBUG
+            jpa: DEBUG
+            orm: DEBUG
+      apache:
+        kafka:
+          clients: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - loggers
+          - mappings
+          - metrics
+          - prometheus
+      base-path: /monitoring
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+# p6spy 로그 설정
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true

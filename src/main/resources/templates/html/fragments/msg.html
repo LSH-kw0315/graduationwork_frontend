@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="msgFragment">
+    <script type="text/javascript" th:inline="javascript">
+        //<![CDATA[
+        var call_message = /*[[${message}]]*/ '';
+
+        if (call_message && call_message != '') {
+            alert(call_message);
+        }
+        //]]>
+    </script>
+</th:block>
+</html>

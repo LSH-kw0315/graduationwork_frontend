@@ -1,0 +1,17 @@
+# Message
+message:
+  source:
+    basename: i18n/messages
+
+spring:
+  application:
+    name: PROMPT
+  profiles:
+    active:
+      - local
+  main:
+    allow-bean-definition-overriding: true
+
+# grace shutdown setting
+server:
+  shutdown: graceful

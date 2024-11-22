@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <script type="text/javascript">
+        //<[CDATA[
+        $(function(){
+            // 검색 이벤트
+            $('[name=schText]').on({
+                'keyup' : function(e){
+                    if(e.which == 13){
+                        fnSearch();
+                    }
+                },
+                'keydown' : function(e){
+                    if(e.which == 13){
+                        e.preventDefault();
+                    }
+                },
+            });
+
+            // 상세
+            $('.detail').click(function(e){
+                e.preventDefault();
+
+                $('[name=memberId]').val($(this).data('id'));
+
+                $('#aform').attr({'method' : 'get', 'action' : '/auth/authView.do'}).submit();
+
+            });
+
+            // 등록
+            $('.btn-insert').click(function(e){
+                e.preventDefault();
+
+                location.href = '/auth/authReg.do';
+            });
+
+            // 엑셀 다운로드
+            $('.btn-down').click(function(e){
+                e.preventDefault();
+
+                $('#aform').attr({'method' : 'get', 'action' : '/auth/excelDownload.do'}).submit();
+            });
+        });
+
+        //페이지이동
+        function fnGoPage(currentPage){
+            $('[name=currentPage]').val(currentPage);
+            $('#aform').attr({action:'/auth/auth.do', method:'get'}).submit();
+        }
+
+        //검색
+        function fnSearch(){
+            $.ajax({
+                url: 'http://121.174.90.142:18649/restApi/develope',
+                type: 'GET',
+                success: function(data) {
+                    console.log(data);
+                    // 여기에서 데이터를 처리하거나 표시합니다.
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', status, error);
+                }
+            });
+        }
+        //]]>
+    </script>
+    <div class="container_sub">
+        <h2>프롬프트 목록</h2>
+        <div class="table_box col">
+            <input type="text" id="schText" name="schText" title="검색어를 입력하세요." placeholder="검색어를 입력하세요." th:value="${commonVO.schText}">
+            <button class="btn bg_G mr_10" onclick="fnSearch(); return false;">검색</button>
+            <input type="text" id="resultText" name="resultText">
+        </div>
+
+    </div>
+</th:block>
+</html>

@@ -1,0 +1,13 @@
+notField:
+  code: "-1"
+  msg: "필드값이 오류가 발생하였습니다."
+  field: "[%s](은)는"
+
+unKnown:
+  code: "-9999"
+  msg: "알수 없는 오류가 발생하였습니다."
+
+
+ERROR_01:
+  code: "-1"
+  msg: "ERROR_01 오류가 발생하였습니다."

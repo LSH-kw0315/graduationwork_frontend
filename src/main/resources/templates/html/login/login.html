@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layout/login_layout">
+<th:block layout:fragment="content">
+<script type="text/javascript" th:inline="javascript">
+	//<[CDATA[
+	$(function () {
+
+	});
+
+	function check() {
+		if ($('#usrId').val() == '') {
+			alert("아이디를 입력하세요")
+			return false;
+		}
+
+		if ($('#paswrd').val() == '') {
+			alert("비밀번호를 입력하세요")
+			return false;
+		}
+		return true;
+	}
+
+	//]]>
+</script>
+<div style="display: grid; place-items: center; min-height: 100vh;">
+	<div class="login_box">
+		<div class="login_wrap">
+			<div class="login">
+				<img src="/common/images/logo.png" alt="로고">
+				<form class="form-inline" method="post" th:action="@{/login.do}">
+					<label for="usrId" class="offscreen">아이디</label>
+					<input type="text" id="usrId" name="usrId" placeholder="아이디" th:value="admin">
+					<div class="pwd_wrap">
+						<label for="paswrd" class="offscreen">비밀번호</label>
+						<input type="password" id="paswrd" name="paswrd" placeholder="비밀번호" th:value="1111">
+					</div>
+					<button type="submit" class="btn_submit" onclick="return check();">로그인</button>
+				</form>
+				<button type="button" class="btn_submit" th:onclick="|location.href='@{/join.do}'|" >회원가입</button>
+			</div>
+		</div>
+	</div>
+</div>
+</th:block>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <script type="text/javascript">
+        //<[CDATA[
+        $(function(){
+            // 수정
+            $('.btn-update').click(function(){
+
+                if($('[name=change]').prop('checked')){
+                    if($("[name=paswrd]").val() == ''){
+                        alert("비밀번호를 입력하세요.");
+                        $("[name=paswrd]").focus();
+                        return;
+                    }
+
+                    if($("[name=paswrd]").val() != $("[name=paswrd_02]").val()){
+                        alert("비밀번호가 동일하지 않습니다.");
+                        $("[name=paswrd_02]").focus();
+                        return;
+                    }
+                }
+
+                if($("[name=loginType]:checked").val() == ''){
+                    alert("권한을 선택해주세요.");
+                    $("[name=loginType]").focus();
+                    return;
+                }
+
+                if(confirm("수정하시겠습니까?")){
+                    $('#aform').attr({'method' : 'post', 'action' : '/auth/authUpdate.do'}).submit();
+                }
+            });
+
+            // 취소
+            $('.btn-cancel2').click(function(){
+                $('#aform').attr({'method' : 'get', 'action' : '/auth/authView.do'}).submit();
+            });
+
+            // 비밀번호 변경시
+            $('[name=change]').change(function(){
+                // 체크시
+                if($(this).prop('checked')){
+                    $('.pw_tr').removeClass('none');
+                } else {
+                    $('.pw_tr').addClass('none');
+                }
+            });
+        });
+        //]]>
+    </script>
+
+    <div class="container_sub">
+        <h2><span class="blue">사용자 관리 </span> 정보 등록</h2>
+        <div class="table_box row">
+            <form role="form" id="aform" method="post" th:action=@{/auth/mgmt.do} class="row g-3" >
+                <input type="hidden" name="memberId" th:value="${resultVO.memberId}" />
+                <input type="hidden" name="currentPage" th:value="${paramVO.currentPage}" />
+                <input type="hidden" name="schType" th:value="${paramVO.schType}" />
+                <input type="hidden" name="schText" th:value="${paramVO.schText}" />
+                <table>
+                    <colgroup>
+                        <col width="20%">
+                        <col width="80%">
+                    </colgroup>
+                    <caption>사용자 관리 정보 등록</caption>
+                    <tdody>
+                        <tr>
+                            <th scope="row"><label for="id">아이디</label></th>
+                            <td th:text="${resultVO.usrId}" />
+                        </tr>
+                        <tr>
+                            <th><label>비밀번호</label></th>
+                            <td>
+                                <input type="checkbox" name="change" id="checkbox_00">
+                                <label for="checkbox_00">변경</label>
+                            </td>
+                        </tr>
+                        <tr class="pw_tr none">
+                            <th><label for="password_01">비밀번호</label></th>
+                            <td>
+                                <input type="password" id="password_01" class="w_320 mr_10" name="paswrd">
+                            </td>
+                        </tr>
+                        <tr class="pw_tr none">
+                            <th><label for="password_02">비밀번호 확인</label></th>
+                            <td><input type="password" id="password_02" class="w_320" name="paswrd_02"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">권한</th>
+                            <td>
+                                <input type="radio" id="A" name="loginType" value="A"
+                                       th:checked="${resultVO.loginType eq 'A'}">
+                                <label for="A">관리자</label>
+                                <input type="radio" id="B" name="loginType" value="B"
+                                       th:checked="${resultVO.loginType eq 'B'}">
+                                <label for="B">운영자</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="bd_bottom"><label for="etc">비고</label></th>
+                            <td><input type="text" id="etc" class="w_500" name="bigo" placeholder="내용을 입력해 주세요"
+                                       th:value="${resultVO.bigo}"></td>
+                        </tr>
+                    </tdody>
+                </table>
+            </form>
+        </div>
+        <div class="btn_area">
+            <button class="btn_grey mr_5 btn-update">수정</button>
+            <button class="btn_grey_b btn-cancel2">취소</button>
+        </div>
+    </div>
+</th:block>
+</html>

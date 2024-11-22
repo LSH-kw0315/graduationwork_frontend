@@ -1,0 +1,1091 @@
+@charset "UTF-8";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: "SUIT";
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+img,
+fieldset {
+  list-style: none;
+  border: 0 none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* roboto-100 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/roboto-v30-latin-100.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/roboto-v30-latin-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-v30-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/roboto-v30-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/roboto-v30-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/roboto-v30-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 100;
+  src: local("SUIT Thin"), url("../fonts/SUIT-Thin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 200;
+  src: local("SUIT ExtraLight"), url("../fonts/SUIT-ExtraLight.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 300;
+  src: local("SUIT Light"), url("../fonts/SUIT-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 400;
+  src: local("SUIT Regular"), url("../fonts/SUIT-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 500;
+  src: local("SUIT Medium"), url("../fonts/SUIT-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 600;
+  src: local("SUIT SemiBold"), url("../fonts/SUIT-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 700;
+  src: local("SUIT Bold"), url("../fonts/SUIT-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 800;
+  src: local("SUIT ExtraBold"), url("../fonts/SUIT-ExtraBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SUIT";
+  font-weight: 900;
+  src: local("SUIT Heavy"), url("../fonts/SUIT-Heavy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "TheJamsil";
+  font-weight: 100;
+  font-style: normal;
+  src: url("../fonts/TheJamsil-Thin.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TheJamsil";
+  font-weight: 300;
+  font-style: normal;
+  src: url("../fonts/TheJamsil-Light.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TheJamsil";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/TheJamsil-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TheJamsil";
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/TheJamsil-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TheJamsil";
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/TheJamsil-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TheJamsil";
+  font-weight: 800;
+  font-style: normal;
+  src: url("../fonts/TheJamsil-ExtraBold.woff2") format("woff2");
+  font-display: swap;
+}
+.offscreen,
+caption {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px); /* for Internet Explorer */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+header .top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 30px;
+  font-family: "SUIT";
+  background: #1c2f55;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.top-text {
+  text-align: right;
+}
+
+.top-text .text-block {
+  padding-left: 20px;
+  color: #fff;
+  line-height: 18px;
+}
+
+header .top .logout {
+  #display: flex;
+  align-items: center;
+  height: 100%;
+  background: url(../images/ico_logout.png) center left no-repeat;
+  background-size: 24px 25px;
+  padding-left: 30px;
+  margin-left: 20px;
+}
+header .top .logout span {
+  color: #eee;
+}
+header .menu {
+  position: relative;
+  #display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 65px;
+  background-color: #fff;
+  #z-index: 9999;
+  #padding-top: 20px;
+  padding-bottom: 20px;
+}
+header .menu h1 {
+  margin: 0 27px;
+}
+header .menu nav > ul {
+  display: flex;
+  align-items: center;
+  float: right;
+  justify-content: flex-start;
+}
+header .menu nav > ul > li {
+  position: relative;
+  width: 200px;
+  font-family: "SUIT";
+  color: #1c2f55;
+  font-size: 20px;
+  font-weight: 600;
+}
+header .menu nav > ul > li > a {
+  display: inline-block;
+  width: 100%;
+  font-family: "SUIT";
+  color: #1c2f55;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 65px;
+  text-align: center;
+  box-sizing: border-box;
+  text-decoration-line: none;
+}
+header .menu nav > ul > li > a.on {
+  width: 100%;
+  color: #1c2f55;
+  border-bottom: 3px solid #1c2f55;
+  font-weight: 500;
+}
+header .menu nav > ul > li ul.sub_menu {
+  position: absolute;
+  left: 0;
+  height: 0;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: -1;
+  transition: 0.1s;
+  overflow: hidden;
+}
+header .menu nav > ul > li ul.sub_menu:hover {
+  background: #f8f8f8;
+}
+header .menu nav > ul > li ul.sub_menu.on {
+  padding: 15px 0;
+  height: auto;
+  z-index: 101;
+}
+header .menu nav > ul > li ul.sub_menu li > a {
+  width: 100%;
+  opacity: 0;
+  text-align: center;
+  line-height: 45px;
+  font-family: "SUIT";
+  font-weight: 400;
+  font-size: 15px;
+  color: #000;
+  transition: 0.5;
+  text-decoration-line: none;
+}
+header .menu nav > ul > li ul.sub_menu li > a:hover {
+  color: #1c2f55;
+  font-weight: 500;
+  text-decoration: underline;
+}
+header .menu nav > ul > li ul.sub_menu li > a.on {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    width: 100%
+  }
+}
+
+#menuWrapBg {
+  width: 100%;
+  height: 0;
+  position: absolute;
+  top: 115px;
+  left: 0;
+  padding: 0;
+  z-index: 100;
+  border-top: 1px solid #bbb;
+  box-sizing: border-box;
+  box-shadow: none;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+#menuWrapBg.on {
+  height: 210px;
+  padding: 25px 0;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .sitemap {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  top: -115px;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  z-index: 100;
+  background: #1c2f55;
+  transition: 0.4s;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+header .sitemap.on {
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+header .sitemap .site_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+header .sitemap .site_top .site_logo {
+  width: 168px;
+}
+
+header .sitemap .site_top .btn_area {
+  width: 50%;
+  height: 82px;
+  text-align: right;
+  border-left: 1px solid #fff;
+  vertical-align: middle;
+}
+
+header .sitemap .site_top .btn_area img {
+  margin-top: 7px;
+}
+
+header .sitemap .close_btn {
+  cursor: pointer;
+}
+
+header .sitemap .m_ul {
+  margin-top: 20px;
+}
+
+header .sitemap .m_ul > li {
+  border-bottom: 1px solid #fff;
+}
+
+header .sitemap .m_ul > li > a {
+  font-size: 24px !important;
+  line-height: 53px;
+  color: #fff;
+  text-decoration-line: none;
+}
+
+header .sitemap .m_sub_menu li {
+  color: #eee;
+  border-top: 1px solid #eee;
+}
+
+header .sitemap .m_sub_menu li a {
+  display: block;
+  padding-left: 17px;
+  line-height: 53px;
+  font-size: 17px;
+  color: #eee;
+  background: url(../images/ico_dot.png) no-repeat left center;
+  text-decoration-line: none;
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+body.body_bg {
+  overflow: hidden !important;
+}
+
+body.body_bg .overlay {
+  opacity: 1;
+}
+
+.btn_site {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  width: 40px;
+  height: 15px;
+}
+
+.m_show {
+  display: none;
+}
+
+#footer {
+  padding: 30px 0;
+  background-color: #262928;
+  #position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  #height: 50px;
+}
+#footer footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: #1c2f55;
+  font-family: "SUIT";
+  color: #fff;
+}
+
+.footer-widget p {
+  float: right;
+  color: #676f6c;
+}
+
+@media screen and (max-width: 992px) {
+  .m_show {
+    display: block;
+  }
+  .header {
+    display: none;
+  }
+  header .menu h1 {
+    margin: 0 25px;
+  }
+  .btn_site {
+    right: 25px;
+  }
+  header .top {
+    padding: 0 25px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+  }
+}
+@media screen and (max-width: 530px) {
+  header .sitemap .site_top .site_logo {
+    width: 40%;
+  }
+}
+.left_menu {
+  width: 280px;
+  height: calc(100vh - 165px);
+  border-right: 1px solid #bbb;
+  overflow-y: auto;
+}
+.left_menu::-webkit-scrollbar {
+  width: 10px;
+}
+.left_menu::-webkit-scrollbar-thumb {
+  background-color: #eee;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.left_menu > ul > li {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #1c2f55;
+}
+.left_menu > ul > li:has(ul) a.menuL.on {
+  background-image: url(../images/ico_arrow_close.png);
+  background-size: 16px 9px;
+}
+.left_menu > ul > li a.menuL {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 30px;
+  line-height: 50px;
+  font-family: "SUIT";
+  color: #1c2f55;
+  background-image: url(../images/ico_arrow_open.png);
+  background-size: 9px 16px;
+  background-repeat: no-repeat;
+  background-position: right 30px center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.left_menu > ul > li a.menuL.on + .subUl {
+  display: block;
+}
+.left_menu > ul > li img {
+  height: 22px;
+  margin-right: 12px;
+}
+.left_menu > ul > li > ul.subUl {
+  display: none;
+  width: 100%;
+}
+.left_menu > ul > li > ul.subUl.on {
+  display: block;
+}
+.left_menu > ul > li > ul.subUl > li {
+  position: relative;
+  width: 100%;
+  padding: 0 30px;
+  line-height: 45px;
+  color: #1c2f55;
+  box-sizing: border-box;
+  border-top: 1px dashed #0b286c;
+}
+.left_menu > ul > li > ul.subUl > li:has(ul) {
+  padding-bottom: 15px;
+}
+.left_menu > ul > li > ul.subUl > li a {
+  position: relative;
+  display: inline-block;
+  margin-left: 33px;
+  color: #1c2f55;
+  font-size: 16px;
+  font-family: "SUIT";
+  font-weight: 400;
+}
+.left_menu > ul > li > ul.subUl > li a::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.left_menu > ul > li > ul.subUl > li a.on {
+  text-decoration: underline;
+}
+.left_menu > ul > li > ul.subUl > li > ul {
+  background: #eee;
+}
+.left_menu > ul > li > ul.subUl > li > ul > li {
+  width: 100%;
+  height: 30px;
+  padding: 0 0 0 15px;
+  color: #1c2f55;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+.left_menu > ul > li > ul.subUl > li > ul > li > a {
+  position: relative;
+  display: inline-block;
+  padding: 0 0 15px 15px;
+  color: #1c2f55;
+  font-size: 15px;
+  font-family: "SUIT";
+  font-weight: 500;
+  line-height: 20px;
+}
+.left_menu > ul > li > ul.subUl > li > ul > li > a::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.left_menu > ul > li > ul.subUl > li > ul > li > a.on {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1700px) {
+  .left_menu > ul > li a.menuL {
+    padding: 0 15px;
+  }
+  .left_menu > ul > li > ul.subUl > li {
+    padding: 0 15px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .left_menu {
+    display: none;
+  }
+}
+.login_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 165px);
+}
+.login_box .login_wrap {
+  width: 327px;
+}
+.login_box .login_wrap .login {
+  display: flex;
+  width: 327px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login_box .login_wrap .login img {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.login_box .login_wrap .login input {
+  width: 327px;
+  height: 50px;
+  border: 1px solid #1c2f55;
+  margin-bottom: 12px;
+  padding: 0 10px;
+  font-size: 18px;
+  color: #787878;
+  font-family: "SUIT";
+  box-sizing: border-box;
+}
+.login_box .login_wrap .login button {
+  width: 327px;
+  height: 50px;
+  background-color: #1c2f55;
+  font-family: "SUIT";
+  color: #fff;
+  font-size: 20px;
+}
+
+main {
+  display: flex;
+}
+/*main .container {
+  width: calc(100% - 264px);
+  height: calc(100vh - 165px);
+}*/
+main .container .con_top {
+  width: 100%;
+  height: 120px;
+  background-image: url(../images/ai.png), linear-gradient(to right, #1c2f55, hsl(245, 46%, 40%));
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .container section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 80px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 60px;
+  box-sizing: border-box;
+}
+main .container section .dl_box {
+  flex: 1;
+}
+main .container section .dl_box dl {
+  height: 236px;
+  margin-bottom: 60px;
+}
+main .container section .dl_box dl dt {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-image: url(../images/ico_arrow.png);
+  background-color: #1c2f55;
+  border-top-left-radius: 37px;
+  border-top-right-radius: 37px;
+  background-repeat: no-repeat;
+  background-position: right 27px center;
+  padding-left: 27px;
+  box-sizing: border-box;
+}
+main .container section .dl_box dl dt a {
+  display: block;
+  width: 100%;
+  color: #fff;
+  font-size: 22px;
+  font-family: "SUIT";
+}
+main .container section .dl_box dl dd {
+  width: calc(100% - 102px);
+  height: 100px;
+  padding: 40px 50px;
+  border: 1px solid #1c2f55;
+  font-family: "SUIT";
+  line-height: 1.5;
+  font-size: 17px;
+}
+main .container section .dl_box dl dd div {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+main .container section .dl_box dl:last-child {
+  margin: 0;
+}
+main .container_sub {
+  width: 100%;
+  padding: 60px;
+}
+main .container_sub h2 {
+  font-family: "SUIT";
+  font-size: 24px;
+  color: #1c2f55;
+  font-weight: 600;
+}
+main .container_sub .table_box.col {
+  padding: 34px 0px;
+}
+main .container_sub .table_box.col table {
+  width: 100%;
+}
+main .container_sub .table_box.col table th {
+  padding: 15px;
+  border-top: 2px solid #1c2f55;
+  border-bottom: 2px solid #1c2f55;
+  color: #333;
+  font-size: 17px;
+  font-family: "SUIT";
+}
+main .container_sub .table_box.col table td {
+  padding: 15px;
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  color: #333;
+  font-size: 17px;
+  font-family: "SUIT";
+  font-weight: 500;
+}
+
+main .container_sub .table_box.col table td:first-child {
+  border-left: none;
+}
+
+main .container_sub .table_box.col table td.content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 350px;
+}
+
+main .container_sub .paging {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+main .container_sub .paging span {
+  width: 18px;
+  height: 20px;
+}
+main .container_sub .paging .first {
+  background: url(../images/ico_arrow_first.png) no-repeat center;
+  background-size: 18px 20px;
+}
+main .container_sub .paging .end {
+  background: url(../images/ico_arrow_end.png) no-repeat center;
+  background-size: 18px 20px;
+}
+main .container_sub .paging .next {
+  background: url(../images/ico_arrow_next.png) no-repeat center;
+  background-size: 11px 20px;
+}
+main .container_sub .paging .prev {
+  background: url(../images/ico_arrow_prev.png) no-repeat center;
+  background-size: 11px 20px;
+}
+main .container_sub .paging .num {
+  font-family: "SUIT";
+  font-size: 19px;
+  color: #1c2f55;
+  font-weight: 600;
+  text-align: center;
+}
+main .container_sub .table_box.row {
+  padding: 34px 0;
+}
+main .container_sub .table_box.row table {
+  width: 100%;
+  border-top: 2px solid #1c2f55;
+  border-bottom: 2px solid #1c2f55;
+}
+main .container_sub .table_box.row table th {
+  padding: 15px;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  color: #1c2f55;
+  font-size: 18px;
+  font-family: "SUIT";
+}
+main .container_sub .table_box.row table td {
+  border-bottom: 1px solid #bbb;
+  padding: 15px;
+}
+main .container_sub .table_box.row table input,
+main .container_sub .table_box.row table select {
+  padding: 10px 15px;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+  color: #1c2f55;
+  font-size: 18px;
+  font-family: "SUIT";
+}
+main .container_sub .table_box.row table select {
+  background: url(../images/ico_arrow_close.png) no-repeat right 15px center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+main .container_sub .table_box.row table select::-ms-expand {
+  display: none;
+}
+main .container_sub .table_box.row table .normal {
+  width: 49.3%;
+}
+main .container_sub .table_box.row table .normal:first-child {
+  margin-right: 1%;
+}
+main .container_sub .table_box.row table .full {
+  width: 100%;
+}
+main .container_sub .btn_area {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+main .container_sub .btn_area button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 42px;
+  background: linear-gradient(to right, #1c2f55, hsl(245, 46%, 40%));
+  color: #fff;
+  font-size: 17px;
+  font-family: "SUIT";
+  border: none;
+}
+main .container_sub .btn_area button:last-child {
+  background: linear-gradient(to right, #1c2f55, #ab2b5a);
+  margin-left: 10px;
+}
+
+main#content_wrap {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 265px;
+}
+
+@media screen and (max-width: 1500px) {
+  main .container_sub .table_box.row table .normal {
+    width: 49%;
+  }
+}
+@media screen and (max-width: 1400px) {
+  main .container {
+    width: 100%;
+  }
+  main .container section {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  main .container {
+    height: auto;
+  }
+  main .container_sub {
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  main .container_sub .table_box.col {
+    padding: 34px 0 20px;
+    overflow-x: scroll;
+  }
+  main .container_sub .table_box.col::-webkit-scrollbar {
+    height: 10px;
+  }
+  main .container_sub .table_box.col::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  main .container_sub .table_box.col table {
+    width: 830px;
+  }
+  main .container section {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  main .container section .dl_box {
+    width: 100%;
+    flex: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  main .container_sub .table_box.row table .normal {
+    width: 100%;
+  }
+  .mt_15_m {
+    margin-top: 15px;
+  }
+}
+@media screen and (max-width: 430px) {
+  main .container section {
+    padding: 40px;
+    gap: 30px;
+  }
+  main .container section .dl_box dl dd {
+    width: calc(100% - 52px);
+    padding: 25px;
+  }
+  main .container section .dl_box dl {
+    margin-bottom: 30px;
+  }
+  main .container_sub .btn_area {
+    justify-content: center;
+  }
+}
+
+.skyblue {
+  color: #8cd2fe !important;
+}
+
+div.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.pagination ul{
+  list-style: none; /* 불릿 포인트 제거 */
+  padding: 0;
+  margin: 0;
+}
+
+a.page-link {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

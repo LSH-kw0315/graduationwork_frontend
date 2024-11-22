@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <script type="text/javascript">
+        //<[CDATA[
+        $(function(){
+            // 검색 이벤트
+            $('[name=schText]').on({
+                'keyup' : function(e){
+                    if(e.which == 13){
+                        fnSearch();
+                    }
+                },
+                'keydown' : function(e){
+                    if(e.which == 13){
+                        e.preventDefault();
+                    }
+                },
+            });
+
+            // 상세
+            $('.detail').click(function(e){
+                e.preventDefault();
+
+                $('[name=memberId]').val($(this).data('id'));
+
+                $('#aform').attr({'method' : 'get', 'action' : '/auth/authView.do'}).submit();
+
+            });
+
+            // 등록
+            $('.btn-insert').click(function(e){
+                e.preventDefault();
+
+                location.href = '/auth/authReg.do';
+            });
+
+            // 엑셀 다운로드
+            $('.btn-down').click(function(e){
+                e.preventDefault();
+
+                $('#aform').attr({'method' : 'get', 'action' : '/auth/excelDownload.do'}).submit();
+            });
+        });
+
+        //페이지이동
+        function fnGoPage(currentPage){
+            $('[name=currentPage]').val(currentPage);
+            $('#aform').attr({action:'/auth/auth.do', method:'get'}).submit();
+        }
+
+        //검색
+        function fnSearch(){
+            $("#currentPage").val("1");
+            $('#aform').attr({action:'/auth/auth.do', method:'get'}).submit();
+        }
+        //]]>
+    </script>
+    <div class="container_sub">
+        <h2>프롬프트 목록</h2>
+        <div class="table_box col">
+            <form role="form" id="aform" method="post" th:action=@{/auth/list.do}>
+                <input type="hidden" name="currentPage" th:value="${pageNavigationVo.currentPage}" />
+                <input type="hidden" name="memberId" value="" />
+                <div class="search_box mb_20">
+                    <div>
+                        <select name="schType">
+                            <option value="id" th:selected="${commonVO.schType eq 'id'}">아이디</option>
+                        </select>
+                        <label for="schText"></label>
+                        <input type="text" id="schText" name="schText" title="검색어를 입력하세요." placeholder="검색어를 입력하세요."
+                               th:value="${commonVO.schText}">
+                    </div>
+                    <div class="flex">
+                        <button class="btn bg_G mr_10" onclick="fnSearch(); return false;">검색</button>
+                        <button class="btn_green btn-down">엑셀로 다운로드</button>
+                    </div>
+                </div>
+            </form>
+            <table>
+                <caption>공지사항 리스트</caption>
+                <colgroup>
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: 10%">
+                    <col style="width: auto">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>가입일</th>
+                    <th>아이디</th>
+                    <th>권한등급</th>
+                    <th>비고</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="result, status : ${resultList}">
+                    <td th:text="${status.index + 1}" />
+                    <td th:text="${result.regdat}" />
+                    <td><a href="#" class="detail" th:data-id="${result.memberId}" th:text="${result.usrId}" /></td>
+                    <td th:text="${result.logintypeNm}" />
+                    <td th:text="${result.bigo}" />
+                </tr>
+                </tbody>
+            </table>
+            <div class="paging">
+                <th:block th:utext="${navigationBar}" />
+            </div>
+        </div>
+        <div class="btn_area">
+            <button class="btn_grey btn-insert">등록</button>
+        </div>
+    </div>
+</th:block>
+</html>

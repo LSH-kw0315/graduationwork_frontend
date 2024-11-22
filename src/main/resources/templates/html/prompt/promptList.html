@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <script th:inline="javascript">
+        function fnDelete(promptSeq){
+            if(confirm("프롬프트를 삭제하시겠습니까?")){
+                $.ajax({
+                    url: "/prompt/promptDelete.do", // AJAX 요청을 보낼 서버의 URL
+                    type: "GET", // HTTP 요청 방식 (GET 또는 POST)
+                    data: { promptSeq: promptSeq },
+                    success: function(data){ // 요청이 성공할 경우 실행되는 함수
+                        alert("삭제되었습니다.");
+                        location.reload();
+                    },
+                    error: function(xhr, status, error){ // 요청이 실패할 경우 실행되는 함수
+                        console.error(xhr.statusText); // 에러 로그 출력
+                    }
+                });
+            }
+            return false;
+        }
+
+        function pageEvent(num){
+            const formObj=document.querySelector("#searcher");
+            formObj.innerHTML+=`<input type='hidden' name='page' value='${num}'>`;
+            formObj.submit();
+        }
+
+        function clearEvent(){
+            self.location='/prompt/promptList.do';
+        }
+    </script>
+    <div class="container_sub">
+        <h2>프롬프트 목록</h2>
+        <div class="row mt-3">
+            <form action=/prompt/promptList.do method="get" id="searcher">
+                <div class="col">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <select class="form-select" name="type">
+                                <option value="t" th:selected="${pageRequestDTO.type == 't'}">제목</option>
+                                <option value="c" th:selected="${pageRequestDTO.type == 'c'}">내용</option>
+                                <option value="tc" th:selected="${pageRequestDTO.type == 'tc'}">제목+내용</option>
+                            </select>
+                        </div>
+                        <input type="text" class="form-control" name=keyword style="margin: 0 0 0 10px;" th:value="${pageRequestDTO.keyword}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary searchBtn" type="submit">검색</button>
+                            <!--<button class="btn btn-outline-secondary clearBtn" type="button" th:onclick="clearEvent()">초기화</button>-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="table_box col">
+            <table>
+                <colgroup>
+                    <col style="width:6%"/>
+                    <col style="width:auto"/>
+                    <col style="width:auto"/>
+                    <col style="width:10%"/>
+                    <col style="width:10%"/>
+                </colgroup>
+                <tr>
+                    <th style="text-align: center;">번호</th>
+                    <th style="text-align: center;">제목</th>
+                    <th style="text-align: center;">내용</th>
+                    <th style="text-align: center;">작성자</th>
+                    <th></th>
+                </tr>
+
+                <tr th:each="prompt, promptStat : ${promptList}">
+                    <td th:style="${'text-align: center'}"; th:text="${paging.totalCount - paging.rowPerPage * (paging.currentPage - 1) - promptStat.index}" ></td>
+                    <td> <a th:href="|/prompt/${prompt.promptSeq}?${pageRequestDTO}|" th:text="${prompt.prompt_name}"></a></td>
+                    <td class="content" th:text="${prompt.prompt_content}"></td>
+                    <td th:style="${'text-align: center'}"; th:text="${prompt.reg_id}"></td>
+                    <td><button class="btn btn-primary btn_bd_grey btn-dupl" th:onclick="fnDelete([[${prompt.promptSeq}]])" th:text="삭제"></button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="pagination">
+            <ul class="pagination flex-wrap">
+                <li class="page-item" th:if="${paging.firstPage > 1}">
+                    <a class="page-link" th:onclick="pageEvent([[${paging.firstPage -1}]])">이전</a>
+                </li>
+
+                <th:block th:each="i: ${#numbers.sequence(paging.firstPage, paging.lastPage)}">
+                    <li th:class="${paging.currentPage == i}?'page-item active':'page-item'">
+                        <a class="page-link"  th:onclick="pageEvent([[${i}]])">[[${i}]]</a>
+                    </li>
+                </th:block>
+                <li class="page-item" th:if="${paging.lastPage * paging.rowPerPage < paging.totalCount}">
+                    <a class="page-link" th:onclick="pageEvent([[${paging.lastPage + 1}]])">다음</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</th:block>
+
+</html>

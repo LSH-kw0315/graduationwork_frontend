@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="leftFragment">
+    <div id="left_menu" class="left_menu">
+        <ul>
+            <li>
+                <a href="" class="menuL"><img src="/common/images/ico_menu_01.png">프롬프트 목록</a>
+                <ul class="subUl">
+                    <li><a href="/prompt/promptList.do" class="">프롬프트 목록</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="" class="menuL"><img src="/common/images/ico_menu_02.png">프롬프트 생성</a>
+                <ul class="subUl">
+                    <li><a href="/prompt/promptReg.do" class="">프롬프트 수동 생성</a></li>
+                    <li><a href="/prompt/promptHalfAutoGen.do" class="">프롬프트 반자동 생성</a></li>
+                    <li><a href="/prompt/promptAutoReg.do" class="">프롬프트 자동 생성</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="" class="menuL"><img src="/common/images/ico_menu_03.png">환경설정</a>
+                <ul class="subUl">
+                    <li><a href="generate.html" class="">사용자 관리</a></li>
+                    <li><a href="" class="">LLM 모델 관리</a></li>
+                    <li><a href="" class="">카테고리 관리</a></li>
+                    <li><a href="" class="">코드 관리</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+      const menuLeft = document.querySelectorAll('.menuL');
+
+      menuLeft.forEach((contents, idx) => {
+        const ex = contents.nextElementSibling
+        if (ex === null) {
+          contents.style.backgroundImage = 'none';
+        }
+        contents.addEventListener('click', (e) => {
+          e.preventDefault()
+          if (contents.parentElement.childNodes.length > 1) {
+            const el = contents.parentElement.hasChildNodes('ul')
+            if (contents.classList.contains('on')) {
+              contents.classList.remove('on');
+            } else {
+              for (const el of menuLeft) el.classList.remove('on');
+
+              if (ex != null) {
+                console.log(ex)
+                contents.classList.add('on');
+              }
+            }
+          }
+        });
+      });
+    </script>
+</th:block>
+</html>

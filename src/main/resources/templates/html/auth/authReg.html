@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <script type="text/javascript">
+        //<[CDATA[
+        $(function(){
+            // 등록
+            $('.btn-insert').click(function(){
+
+                if($("[name=usrId]").val() == ''){
+                    alert("아이디를 입력하세요.");
+                    $("[name=usrId]").focus();
+                    return;
+                }
+
+                if($("[name=checkId]").val() == '0'){
+                    alert("아이디 중복체크를 해주세요.");
+                    return;
+                }
+
+                if($("[name=paswrd]").val() == ''){
+                    alert("비밀번호를 입력하세요.");
+                    $("[name=paswrd]").focus();
+                    return;
+                }
+
+                if($("[name=loginType]:checked").val() == ''){
+                    alert("권한을 선택해주세요.");
+                    $("[name=loginType]").focus();
+                    return;
+                }
+
+                if(confirm("등록하시겠습니까?")){
+                    $('#aform').attr({'method' : 'post', 'action' : '/auth/authInsert.do'}).submit();
+                }
+            });
+
+            // 취소
+            $('.btn-cancel').click(function(){
+                location.href = '/auth/auth.do';
+            });
+
+            // 아이디에 글쓸때
+            $("[name=usrId]").keyup(function(){
+                // 중복확인 초기화
+                $('.id_dupl_text').addClass('none');
+                $('[name=checkId]').val('0');
+            });
+
+            // 중복 검사
+            $('.btn-dupl').click(function(e){
+                if($("[name=usrId]").val() == ''){
+                    alert("아이디를 입력하세요.");
+                    $("[name=usrId]").focus();
+                    return;
+                }
+
+                $.ajax({
+                    url : '/auth/checkIdAjax.do',
+                    data : {'id' : $('[name=usrId]').val()},
+                    type : 'get',
+                    dataType : 'json',
+                    success : function(response){
+                        if(response.resultStats.resultCode == 'error'){
+                            alert(response.resultStats.resultMsg);
+                        } else {
+                            if(response.checkYn != 'Y') {
+                                alert("중복되는 아이디입니다");
+                                $('.id_dupl_text').addClass('none');
+                                $('[name=checkId]').val('0');
+                            } else {
+                                $('.id_dupl_text').removeClass('none');
+                                $('[name=checkId]').val('1');
+                            }
+                        }
+                    }
+                });
+            });
+        });
+        //]]>
+    </script>
+
+    <div class="container_sub">
+        <h2><span class="blue">사용자 관리 </span> 정보 등록</h2>
+        <div class="table_box row">
+            <form role="form" id="aform" method="post" th:action=@{/auth/mgmt.do} class="row g-3" >
+                <input type="hidden" name="currentPage" th:value="${paramVO.currentPage}" />
+                <input type="hidden" name="schType" th:value="${paramVO.schType}" />
+                <input type="hidden" name="schText" th:value="${paramVO.schText}" />
+                <input type="hidden" name="checkId" th:value="0" />
+            <table>
+                <tdody>
+                    <tr>
+                        <th scope="row"><label for="id">아이디</label></th>
+                        <td>
+                            <input type="text" id="id" name="usrId" class="mr_10">
+                            <button type="button" class="btn_bd_grey btn-dupl">중복확인</button>
+                            <span class="red id_dupl_text none">사용할 수 있는 아이디입니다</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="password_01">비밀번호</label></th>
+                        <td>
+                            <input type="password" id="password_01" class="w_320 mr_10" name="paswrd">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">권한</th>
+                        <td>
+                            <input type="radio" id="A" name="loginType" value="A" checked>
+                            <label for="A">관리자</label>
+                            <input type="radio" id="B" name="loginType" value="B">
+                            <label for="B">운영자</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="bd_bottom"><label for="etc">비고</label></th>
+                        <td><input type="text" id="etc" class="w_500" name="bigo" placeholder="내용을 입력해 주세요"></td>
+                    </tr>
+                </tdody>
+            </table>
+            </form>
+        </div>
+        <div class="btn_area">
+            <button class="btn_grey mr_5 btn-insert">등록</button>
+            <button class="btn_grey_b btn-cancel">취소</button>
+        </div>
+    </div>
+</th:block>
+</html>

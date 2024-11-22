@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footerFragment">
+  <footer class="main-footer">
+    <div id="footer" class="footer_inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="logo_add footer-widget">
+              <h1><img src="/common/images/logo_h.png" alt=""></h1>
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
+            <div class="logo_add footer-widget">
+              <p>INTELLIGENCE'S PROMPT ENGINEERING PROJECT<br>
+                COPYRIGHTⓒIntelligence. ALL RIGHTS RESERVED</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    $("#familySite").change(function () {
+      if (this.value == '') {
+      } else {
+        window.open(this.value);
+      }
+    });
+  </script>
+</th:block>
+</html>

@@ -1,0 +1,40 @@
+error:
+  login: "로그인에 실패했습니다."
+  forceLogout: "다른 기기에서 로그인하여 로그아웃 되었습니다."
+  access:
+    menu: "접근할 권한이 없습니다."
+  file:
+    wrongPath: "잘못된 경로입니다."
+    size:
+      over: "파일은 최대 {0} 를 넘을수 없습니다."
+    not:
+      access: "{0} 확장자 파일은 첨부할 수 없습니다."
+    access: "{0} 확장자 파일만 첨부할 수 있습니다."
+  img:
+    size:
+      over: "이미지는 최대 {0}를 넘을수 없습니다."
+    not:
+      access: "이미지 파일은 {0}파일만 업로드 가능합니다"
+  param: "필수 파라메터 오류입니다."
+  nodata:
+    msg: "해당 데이터가 없습니다."
+  bad:
+    access: "정상적인 접근이 아닙니다."
+  add:
+    menu: "메뉴를 추가해주세요."
+  exist:
+    id: "이미 등록된 아이디 입니다."
+
+msg:
+  logout: "로그아웃 되었습니다."
+
+succ:
+  data:
+    insert: "등록되었습니다."
+    insert-fail: "등록되지 않았습니다."
+    update: "수정되었습니다."
+    delete: "삭제되었습니다."
+    cancel: "취소되었습니다."
+    save: "저장되었습니다."
+    copy: "복사되었습니다."
+    refresh: "새로고침되었습니다."

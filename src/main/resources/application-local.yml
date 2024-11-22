@@ -1,0 +1,116 @@
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    cache: false
+    check-template-location: false
+    enabled: true
+    prefix: classpath:/templates/html/
+    suffix: .html
+#    view-names: /html/*
+
+  datasource:
+    url: jdbc:mariadb://124.198.81.185:18643/promptdb?zeroDateTimeBehavior=convertToNull
+    #url: jdbc:mariadb://localhost:18643/promptdb?zeroDateTimeBehavior=convertToNull
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: akfldk123!
+
+  jpa:
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+        use_sql_comments: false
+        format_sql: false
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  batch:
+    job:
+      enabled: false
+
+logging:
+  #  file:
+  #    name: /logs/server_log.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: false
+  level:
+    com:
+      prompt: debug
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: DEBUG
+              BasicExtractor: DEBUG
+      springframework:
+        security: debug
+        web: DEBUG
+        data:
+          jpa:
+            repository:
+              support: DEBUG
+        session:
+          data:
+            redis: DEBUG
+      boot:
+        autoconfigure:
+          data:
+            rest: DEBUG
+            jpa: DEBUG
+            orm: DEBUG
+      apache:
+        kafka:
+          clients: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - loggers
+          - mappings
+          - metrics
+          - prometheus
+      base-path: /monitoring
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+# p6spy 로그 설정
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+globals:
+  do-home: /board/list.do
+  do-login: /login.do
+  # 중복로그인 여부
+  dup-login-yn: true
+  file-save-web-root: N
+  # 웹루트 파일(이미지등 바로 실행하는 파일들)
+  file-webroot-path: "D:/jworkspace/prompt_2024/web_upload/"
+  # 첨부파일
+  file-path: "D:/jworkspace/prompt_2024/data_upload/"
+  # 파일 업로드 사이즈 설정(byte 단위 1024byte = 1KB ([ex]1024 * 1024 = 1M))
+  img-file-max-size: 10485760
+  file-max-size: 52428800
+  video-file-max-size: 10485760

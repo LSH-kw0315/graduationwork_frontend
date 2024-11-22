@@ -1,0 +1,101 @@
+.ck-editor__editable_inline {
+	min-height: 400px;
+}
+.bd-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1071;
+  min-height: 4rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+.bd-sidebar {
+  position: sticky;
+  top: 4rem;
+  z-index: 1000;
+  height: calc(100vh - 4rem);
+  background: #eee;
+  border-right: 1px solid rgba(0,0,0,.1);
+  overflow-y: auto;
+  min-width: 160px;
+  max-width: 220px;
+}
+.bd-sidebar .nav {
+  display: block;
+}
+.bd-sidebar .nav>li>a {
+  display: block;
+  padding: .25rem 1.5rem;
+  font-size: 90%;
+}
+.txtarea_pmt_gen {
+    outline: none;
+    width: 80%;
+    min-height: 30rem;
+}
+
+
+header .menu_box nav > ul > li > a.active {
+    width: 100%;
+    color: #234eac;
+    border-bottom: 3px solid #234eac;
+    font-weight: 500;
+}
+
+header .menu_box nav > ul > li ul.sub_menu li > a.active {
+    color: #234eac;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.none {display:none !important;}
+
+main .content_wrap .table_wrap .pagenation a {
+	border: 0;
+}
+
+main .content_wrap .table_wrap .pagenation span.num a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: "SUIT";
+    font-weight: 400;
+    color: #000;
+    border: none;
+}
+
+.content_wrap_popup .table_wrap .pagenation a {
+	border: 0;
+}
+
+.content_wrap_popup .table_wrap .pagenation span.num a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: "SUIT";
+    font-weight: 400;
+    color: #000;
+    border: none;
+}
+
+.ck.ck-balloon-panel.ck-powered-by-balloon {
+    /* You can use your own variables here as well. */
+    --ck-powered-by-background: white;
+    --ck-powered-by-border-color: white;
+}
+
+.ck.ck-balloon-panel.ck-powered-by-balloon .ck.ck-powered-by .ck-powered-by__label {
+    text-transform: none;
+    font-family: var(--main-font-family);
+    padding-left: 2px;
+    color: var(--main-text-color);
+}
+
+.ck.ck-balloon-panel.ck-powered-by-balloon .ck.ck-powered-by .ck-icon {
+    filter: brightness(10);
+}
+
+main .content_wrap .table_wrap .table_box {width:100%; overflow-x:auto; margin-bottom:40px;}
+main .content_wrap .table_wrap .table_box > table {margin-bottom:0; table-layout:fixed;}
+
